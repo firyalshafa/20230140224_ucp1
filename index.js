@@ -31,3 +31,13 @@ db.sequelize.sync()
         res.status(500).send(err);
     }
 });
+
+app.get('/film', async (req, res) => {
+    try {
+        
+        const film = await db.Film.findAll();
+        res.send(film); 
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
