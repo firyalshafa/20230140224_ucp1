@@ -7,3 +7,15 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended : true
 }));
+
+db.sequelize.sync() 
+    .then(() => {
+       
+        app.listen(PORT, () => {
+            console.log(`Server started on port ${PORT}`);
+        });
+    })
+    .catch((err) => {
+        
+        console.log(err);
+    });
